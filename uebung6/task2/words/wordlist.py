@@ -39,9 +39,9 @@ def _get_simple_word_list() -> list[str]:
         list[str]: List of simple German words
     """
     return [
-        'haus', 'baum', 'auto', 'katze',
-        'hund', 'fisch', 'vogel', 'pferd',
-        'schule', 'arzt', 'apotheke', 'hotel'
+        'HAUS', 'BAUM', 'AUTO', 'KATZE',
+        'HUND', 'FISCH', 'VOGEL', 'PFERD',
+        'SCHULE', 'ARZT', 'APOTHEKE', 'HOTEL'
     ]
 
 
@@ -62,7 +62,7 @@ def _load_from_file(filename: str) -> list[str]:
     """
     try:
         with open(filename, 'r', encoding='utf-8') as f:
-            return [line.strip().lower() for line in f]
+            return [line.strip().upper() for line in f]
     except FileNotFoundError:
         print(f"Error: File '{filename}' not found.")
         return []
@@ -84,7 +84,7 @@ def _fetch_from_url(url: str) -> list[str]:
     """
     try:
         with urllib.request.urlopen(url) as response:
-            return [line.decode('utf-8').strip().lower()
+            return [line.decode('utf-8').strip().upper()
                     for line in response.readlines()]
     except Exception as e:
         print(f"Fehler beim Download: {e}")

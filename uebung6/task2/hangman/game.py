@@ -23,7 +23,7 @@ def _get_valid_guess() -> str:
         str: A single valid letter
     """
     while True:
-        guess: str = input("Rate einen Buchstaben: ").strip().lower()
+        guess: str = input("Rate einen Buchstaben: ").strip().upper()
 
         # Return single valid letter
         if len(guess) == 1 and guess.isalpha():
@@ -58,10 +58,9 @@ def start(word: str, max_attempts: int = 6) -> bool:
 
         # Check if the word has been guessed
         if display_word == word:
-            print(f"\nGratulation! Das Wort war {display_word}.\nDu hast {wrong_guesses} Fehlversuche benötigt.")
+            print(f"\nGratulation! Das Wort war {display_word}.\nDu hast {wrong_guesses} falsche Buchstaben geraten.")
             return True
 
-        # Show current game state
         print(f"\nAktuelles Wort: {display_word}\nFehlversuche: {wrong_guesses}/{max_attempts}")
 
         # Get letter guess
@@ -75,10 +74,10 @@ def start(word: str, max_attempts: int = 6) -> bool:
         # Add guessed letter to the set
         guessed_letters.add(guess)
 
-        # Check if the letter is in the word
+        # Check if the letter is not in the word
         if guess not in word:
             wrong_guesses += 1
-            print(f"Falsch! Du hast noch {max_attempts - wrong_guesses} Versuche übrig.")
+            print(f"Falsch! Du hast noch {max_attempts - wrong_guesses} Versuch(e) übrig.")
 
             # Check if all attempts have been used
             if wrong_guesses == max_attempts:

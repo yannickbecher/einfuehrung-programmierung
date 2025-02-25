@@ -9,5 +9,6 @@ def main() -> None:
     # print("Spoiler Alert: {}".format(secret))
     hangman.game.start(secret, 10)
 
+
 if __name__ == "__main__":
     main()
